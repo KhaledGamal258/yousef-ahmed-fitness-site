@@ -19,3 +19,11 @@ $('#start-form').addEventListener('submit', e => {e.preventDefault(); const goal
 $('.close-dialog').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', e => { if (e.target === dialog) {const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) dialog.close();} });
 $('#download-summary').addEventListener('click', () => download('\ufeff'+$('#summary-text').textContent,'my-fitness-start.txt','text/plain;charset=utf-8'));
+
+const menuToggle = document.querySelector('.menu-toggle');
+const mainNav = document.querySelector('#main-nav');
+function closeMenu(){menuToggle.setAttribute('aria-expanded','false');mainNav.classList.remove('is-open');}
+menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('aria-expanded')!=='true';menuToggle.setAttribute('aria-expanded',String(open));mainNav.classList.toggle('is-open',open);});
+mainNav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){closeMenu();menuToggle.focus();}});
+document.querySelector('.ticker-toggle').addEventListener('click',e=>{const button=e.currentTarget;const paused=document.querySelector('.ticker').classList.toggle('is-paused');button.setAttribute('aria-pressed',String(paused));button.setAttribute('aria-label',paused?'تشغيل حركة الشريط':'إيقاف حركة الشريط');button.textContent=paused?'▶':'Ⅱ';});
