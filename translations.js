@@ -78,6 +78,7 @@ VLOG / موضوع مقترح|VLOG / Proposed topic
 جرّب شكل الوصفة وقائمة المكونات وتغيير عدد الحصص.|Explore the recipe format, ingredients and adjustable servings.
 افتح مثال الوصفة|Open the sample recipe
 3 أفكار للمحتوى|3 content ideas
+فكرة واحدة معروضة|1 idea shown
 المحتوى المنشور فعلًا على إنستجرام يوسف ↗|See Yousef's published Instagram content ↗
 كل يوم مختلف.|Every day is different.
 خلي لبدايتك شكل واضح.|Make your start clear.

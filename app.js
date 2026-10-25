@@ -3,7 +3,7 @@ const $ = s => document.querySelector(s);
 let calorieResult = null;
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 function activateTab(tab) { tabs.forEach(t => { const active = t === tab; t.setAttribute('aria-selected', String(active)); t.tabIndex = active ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !active; }); }
-tabs.forEach((tab, i) => { tab.addEventListener('click', () => activateTab(tab)); tab.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return; e.preventDefault(); const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowLeft' ? 1 : -1) + tabs.length) % tabs.length; activateTab(tabs[next]); tabs[next].focus(); }); });
+tabs.forEach((tab, i) => { tab.addEventListener('click', () => activateTab(tab)); tab.addEventListener('keydown', e => { if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return; e.preventDefault(); const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + ((e.key === 'ArrowRight') === (document.documentElement.dir !== 'rtl') ? 1 : -1) + tabs.length) % tabs.length; activateTab(tabs[next]); tabs[next].focus(); }); });
 function energy({weight,height,age,sex,activity}) { const rest = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161); return {rest: Math.round(rest), daily: Math.round(rest * activity)}; }
 $('#cal-form').addEventListener('input', () => {calorieResult = null; $('#cal-number').textContent = '—'; $('#cal-context').textContent = 'البيانات اتغيّرت. اضغط «احسب احتياجي» لتحديث النتيجة.';});
 $('#cal-form').addEventListener('submit', e => { e.preventDefault(); if (!e.target.reportValidity()) return; const values = Object.fromEntries(new FormData(e.target)); calorieResult = energy(values); $('#cal-number').textContent = calorieResult.daily.toLocaleString('en-US'); $('#cal-context').textContent = `احتياج الراحة التقديري ${calorieResult.rest.toLocaleString('en-US')} سعر. بعد إضافة نشاطك، ده تقدير الحفاظ على وزنك، مش هدف تخسيس أو تضخيم.`; });
@@ -17,7 +17,7 @@ $('#download-week').addEventListener('click', () => { const now = new Date(); co
 const dialog = $('#summary-dialog');
 $('#start-form').addEventListener('submit', e => {e.preventDefault(); const goal = new FormData(e.target).get('goal'); const days = selectedDays(); $('#summary-text').textContent = `ملخص بدايتي مع يوسف أحمد\n\nهدفي: ${goal}\nأيامي المناسبة: ${days.length ? days.join('، ') : 'لسه هحددها مع الكوتش'}\nالوقت المتاح للجلسة: ${$('#duration').value} دقيقة\n${calorieResult ? `تقدير الحفاظ على الوزن: ${calorieResult.daily} سعر حراري / يوم\n(تقدير أولي وليس خطة غذائية)\n` : ''}\nحابب أعرف تفاصيل التدريب والأسعار وشكل المتابعة المناسب ليا.`; dialog.showModal();});
 $('.close-dialog').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', e => { if (e.target === dialog) {const r=dialog.getBoundingClientRect(); if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) dialog.close();} });
+// Dialog dismissal is shared in polish.js.
 $('#download-summary').addEventListener('click', () => download('\ufeff'+$('#summary-text').textContent,'my-fitness-start.txt','text/plain;charset=utf-8'));
 
 const menuToggle = document.querySelector('.menu-toggle');
@@ -27,3 +27,6 @@ menuToggle.addEventListener('click',()=>{const open=menuToggle.getAttribute('ari
 mainNav.addEventListener('click',e=>{if(e.target.closest('a'))closeMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){closeMenu();menuToggle.focus();}});
 document.querySelector('.ticker-toggle').addEventListener('click',e=>{const button=e.currentTarget;const paused=document.querySelector('.ticker').classList.toggle('is-paused');button.setAttribute('aria-pressed',String(paused));button.setAttribute('aria-label',paused?'تشغيل حركة الشريط':'إيقاف حركة الشريط');button.textContent=paused?'▶':'Ⅱ';});
+
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('header'))closeMenu();});
+matchMedia('(min-width:1101px)').addEventListener('change',closeMenu);
