@@ -1,0 +1,50 @@
+/* Material 3-inspired shape, spacing and state tokens; custom web implementation. */
+:root{--radius-sm:12px;--radius-md:20px;--radius-lg:28px;--radius-pill:999px;--contact:#294631;--contact-hover:#3c5c43;--state-time:160ms}
+html{scroll-padding-bottom:110px}
+.lab-bar{background:#e4e8dc;border-color:#c5cdbd;color:#294631;min-height:48px}
+.button,.content-filters button,.tool-nav button{border-radius:var(--radius-pill);min-height:48px}
+.button:hover{transform:none!important}
+button,a{ -webkit-tap-highlight-color:transparent}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a56624;outline-offset:4px}
+.photo-frame,.compare-canvas,.tool-shell,.phone-demo,dialog{border-radius:var(--radius-lg);overflow:hidden}
+input,select,.goal-options label>span{border-radius:var(--radius-sm)}
+.journal-section{background:#e5e8df!important;border-block:1px solid #ccd2c3}
+.journal-grid{gap:24px}
+.content-card{background:#fbf9f4;border:1px solid #d5d9cd;border-radius:var(--radius-md);overflow:hidden}
+.content-info{padding:24px}.content-info button{min-height:48px;text-decoration:underline;text-underline-offset:5px}
+.content-art{height:290px}.sample-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-credit{position:absolute;bottom:0;inset-inline:0;padding:18px 12px 10px;background:linear-gradient(transparent,#000c);color:#fff;font-size:9px}
+.draft-label{border-radius:var(--radius-pill)}
+.whatsapp-dock{position:fixed;inset:auto auto max(20px,env(safe-area-inset-bottom)) 20px;min-height:56px;padding:0 22px;gap:10px;border:1px solid #ffffff40;border-radius:var(--radius-pill);background:var(--contact);color:#fff;box-shadow:0 4px 14px #14261926;font-size:13px;transform:none!important;animation:none!important;transition:background var(--state-time),box-shadow var(--state-time);z-index:5}
+.whatsapp-dock svg{width:24px;height:24px;flex-shrink:0}.whatsapp-dock span{font:inherit}
+.whatsapp-dock:hover{background:var(--contact-hover);box-shadow:0 6px 20px #14261940}.whatsapp-dock:active{background:#203927;box-shadow:0 2px 6px #14261930}
+footer.wrap{padding-bottom:120px!important}dialog{z-index:10}
+@media(max-width:1100px){.featured .content-art{height:100%;min-height:280px}}
+@media(max-width:760px){.content-art,.featured .content-art{height:260px;min-height:0}.content-info{padding:20px}.whatsapp-dock{left:16px;bottom:max(16px,env(safe-area-inset-bottom));min-height:52px;padding:0 18px}.lab-bar{align-items:center}.lab-bar>a{font-size:11px}.lab-bar>span{width:100%}.photo-frame{border-radius:20px}}
+@media(prefers-reduced-motion:reduce){.whatsapp-dock,.button{transition:none}}
+
+/* Restore Yousef's red accent while retaining the local preview's warm surfaces. */
+:root{--contact:#b7382b;--contact-hover:#982c22}
+body[data-look=journal]{--lime:#b7382b;--ink:#2c2320;--muted:#75665e;--line:#d5c8bf;--panel:#ede3da}
+.lab-bar{background:#f1ded5;border-color:#d9b8a9;color:#7c3026}
+body[data-look=journal] .button{background:#b7382b;border-color:#b7382b;color:#fff}
+body[data-look=journal] .button:hover{background:#982c22;border-color:#982c22}
+body[data-look=journal] .hero p,body[data-look=journal] .hero-note,body[data-look=journal] .hero-note small,body[data-look=journal] header nav a{color:#716158}
+body[data-look=journal] .image-stamp{background:#ff795f;color:#251714}
+body[data-look=journal] .ticker,body[data-look=journal] .ticker-toggle{background:#2c211e;border-color:#4c342b;color:#fff}
+body[data-look=journal] .ticker b{color:#ff795f}
+body[data-look=journal] .tools-section{background:#eee0d6}
+body[data-look=journal] .tool-nav button[aria-selected=true],body[data-look=journal] .content-filters button[aria-pressed=true]{background:#b7382b;border-color:#b7382b;color:#fff}
+body[data-look=journal] .goal-options input:checked+span{background:#f4dcd1;border-color:#b7382b}
+body[data-look=journal] .goal-options small{color:#716158}
+body[data-look=journal] .brand .monogram span{color:#b7382b}
+.journal-section{background:#ede3da!important;border-color:#d5c8bf}.content-card{border-color:#dbcfc6}
+.whatsapp-dock{box-shadow:0 4px 14px #35171026}.whatsapp-dock:hover{box-shadow:0 6px 20px #35171040}.whatsapp-dock:active{background:#81261e}
+.whatsapp-dock .whatsapp-icon{display:block;width:24px;height:24px;fill:currentColor;stroke:none;overflow:visible}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:#b7382b}
+header{direction:ltr}header nav,header>.button,header .menu-toggle{direction:rtl}
+header>.brand{flex-shrink:0}header>.button{white-space:nowrap;gap:16px}
+@media(max-width:1100px){header .menu-toggle{margin-inline-start:auto}}
+@media(max-width:760px){header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px}header>.brand{grid-column:1;grid-row:1;justify-self:start}header>.button{display:inline-flex;grid-column:2;grid-row:1;font-size:11px;gap:8px;padding:8px 12px}header>.button span{font-size:18px}header .menu-toggle{grid-column:2;grid-row:2;justify-self:end;margin:0}header nav{grid-column:1/-1;grid-row:3}header .brand{font-size:14px;gap:7px}header .brand small{font-size:6px;letter-spacing:1px}header .monogram{font-size:30px}header .monogram span{font-size:21px;margin-left:3px}}
+@media(max-width:360px){header{padding-inline:12px;column-gap:8px}header>.button{font-size:10px;padding-inline:9px;gap:5px}header .brand{font-size:12px}header .brand small{font-size:5px}}
+@media(max-width:760px){header>.brand{white-space:nowrap}header>.button{max-width:158px;white-space:normal;justify-content:center;text-align:center}header>.button span{display:none}}

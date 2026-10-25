@@ -1,0 +1,39 @@
+/* Shared semantic surfaces: every section uses the same active theme. */
+html{--surface:#f4efe6;--surface-raised:#fbf8f3;--surface-alt:#ede3da;--text:#2c2320;--secondary:#706158;--border:#d5c8bf;--accent:#b7382b;--accent-soft:#f4dcd1;--on-accent:#fff;--accent-hover:#982c22}
+html[data-theme=dark]{--surface:#171514;--surface-raised:#211d1b;--surface-alt:#2a211e;--text:#f4eee7;--secondary:#c5b5a9;--border:#514138;--accent:#ff795f;--accent-soft:#432820;--on-accent:#211511;--accent-hover:#ff9c83}
+body[data-look=journal]{--bg:var(--surface);--panel:var(--surface-alt);--ink:var(--text);--muted:var(--secondary);--line:var(--border);--lime:var(--accent);--contact:var(--accent);--contact-hover:var(--accent-hover);background:var(--surface);color:var(--text)}
+body[data-look=journal] .button,body[data-look=journal] .content-filters button[aria-pressed=true],body[data-look=journal] .tool-nav button[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+body[data-look=journal] .button:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+body[data-look=journal] .hero p,body[data-look=journal] .hero-note,body[data-look=journal] .hero-note small,body[data-look=journal] header nav a,body[data-look=journal] .goal-options small{color:var(--secondary)}
+body[data-look=journal] .brand .monogram span{color:var(--accent)}
+body[data-look=journal] .tools-section,.journal-section{background:var(--surface-alt)!important;color:var(--text);border-color:var(--border)}
+.content-card,.tool-shell{background:var(--surface-raised);color:var(--text);border-color:var(--border)}
+.tool-nav,.tool-nav button,.fields input,.fields select,.duration-label select,.days span,.result,.result-rule{border-color:var(--border)}
+body .fields input,body .fields select,body .duration-label select,body .serving-control select{background:var(--surface);color:var(--text)}
+.result{background:var(--surface-alt);color:var(--text)}
+.tools-section .section-top>p,.subtle,.result p,.result small,.fields label,.duration-label,.tool-nav button{color:var(--secondary)}
+.tools-section .eyebrow,.result-number,.result a{color:var(--accent)}
+.days input:checked+span{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+body[data-look=journal] .goal-options input:checked+span{background:var(--accent-soft);border-color:var(--accent)}
+.lab-bar{background:var(--surface-alt);color:var(--text);border-color:var(--border)}
+.whatsapp-dock{color:var(--on-accent);border-color:var(--border)}.whatsapp-dock:active{background:var(--accent-hover)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline-color:var(--accent)}
+.display-preferences{max-width:1440px;margin:auto;padding:12px 64px;display:flex;justify-content:flex-end;align-items:center;gap:20px;border-bottom:1px solid var(--border)}
+.display-preferences label{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--secondary)}
+.display-preferences select{min-height:44px;max-width:145px;border:1px solid var(--border);border-radius:12px;padding:8px 12px;background:var(--surface-raised);color:var(--text);font:inherit}
+footer{direction:ltr}footer p{direction:rtl}footer>a:last-child{direction:ltr}footer .brand{flex-shrink:0}
+.eyebrow{direction:inherit!important;text-align:start!important;font-family:var(--font);letter-spacing:0!important;font-size:12px}
+html[lang=en] body{font-family:Arial,sans-serif;--font:Arial,sans-serif;line-height:1.65}
+html[lang=en] header nav,html[lang=en] header>.button,html[lang=en] header .menu-toggle,html[lang=en] footer p{direction:ltr}
+html[lang=en] .hero h1{font-family:'Barlow Condensed',Arial,sans-serif;letter-spacing:-.5px;font-size:clamp(48px,5.5vw,78px);line-height:1.08}
+html[lang=en] h2{font-family:'Barlow Condensed',Arial,sans-serif;letter-spacing:0;line-height:1.15}
+html[lang=en] .eyebrow{font-family:'Barlow Condensed',Arial,sans-serif;letter-spacing:1.5px!important}
+html[lang=en] .section-top>p,html[lang=en] .phone-demo,html[lang=en] .tool-nav button{text-align:start}
+html[lang=en] .hero-visual{margin-left:28px}html[lang=en] .principles article:first-child{padding-left:0;padding-right:30px}
+html[lang=en] .days span{font-size:12px}html[lang=en] header nav{gap:16px;font-size:13px}
+html[lang=en] .ticker span{font-family:'Barlow Condensed',Arial,sans-serif}
+html[lang=ar] .ticker span{font-family:var(--font);letter-spacing:0}
+html[lang=en] .photo-caption{direction:ltr}html[lang=en] footer p{text-align:start}
+@media(max-width:1100px){.display-preferences{padding-inline:32px}}
+@media(max-width:760px){.display-preferences{padding:10px 20px;gap:12px;justify-content:space-between}.display-preferences label{font-size:11px;gap:6px}.display-preferences select{max-width:122px;padding-inline:8px}html[lang=en] .hero h1{font-size:54px}html[lang=en] .principles article:first-child{padding-inline:0}html[lang=en] .hero-visual{margin-left:14px}html[lang=en] header>.button{font-size:12px}footer p{text-align:start}html[lang=en] .goal-options strong{font-size:20px}}
+@media(max-width:360px){.display-preferences{padding-inline:12px;gap:8px}.display-preferences label{flex-direction:column;align-items:flex-start;gap:4px}.display-preferences select{min-width:120px}html[lang=en] header>.button{font-size:11px}}
